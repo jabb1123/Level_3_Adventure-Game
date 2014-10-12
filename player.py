@@ -3,6 +3,7 @@ from clock import *
 
 import sys
 
+
 class Player (Person):
 
     # static field representing the player
@@ -40,6 +41,7 @@ class Player (Person):
 
         print '------------------------------------------------------------'
         print 'You are in', loc.name()
+        print loc.description
 
         if all_stuff:
             print 'You see:', names(all_stuff)

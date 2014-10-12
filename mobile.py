@@ -2,9 +2,10 @@ from thing import *
 
 class MobileThing (Thing):
 
-    def __init__ (self,name,loc):
+    def __init__ (self,name,loc,description):
         Thing.__init__(self,name,loc)
         self._original_location = loc
+        self.description = description
 
     def move (self,loc):
         self.location().del_thing(self)

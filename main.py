@@ -36,17 +36,23 @@ def biconnect (fr,dir,to):
 
 def create_world ():
 
-    mh353 = Room('Riccardo Office')
-    mh3rd = Room('Milas Hall Third Floor')
-    mh2nd = Room('Milas Hall Second Floor')
-    mh1st = Room('Milas Hall First Floor')
-    oval = Room('Oval')
-    ac1st = Room('Academic Center First Floor')
-    ac113 = Room('Academic Center 113')
-    cc1st = Room('Campus Center First Floor')
-    westh = Room('West Hall')
-    easth = Room('East Hall')
-    babson = Room('Babson College')
+    mh353 = Room('Riccardo Office','')
+    mh3rd = Room('Milas Hall Third Floor','')
+    mh2nd = Room('Milas Hall Second Floor','')
+    mh1st = Room('Milas Hall First Floor','Where admissions is')
+    oval = Room('Oval', 'The Oval, smack in the center of Olin College.')
+    ac1st = Room('Academic Center First Floor','Machine shop and a couple of classrooms.')
+    ac113 = Room('Academic Center 113','Game Programming classroom.')
+    cc1st = Room('Campus Center First Floor','Where Oliners eat.')
+    westh = Room('West Hall','Where underclassman live.')
+    easth = Room('East Hall','Where upper classman live.')
+    babson = Room('Babson College','Where the babos are.')
+    
+    bTrim = Room('Trim dinning hall','Where the babos eat.')
+    bHealth = Room('Babson Public Health','Where everyone goes to be healthy.')
+    bGym = Room('Babson Gym','Where you go to get fit.')
+    cc2nd = Room('Campus Center Second Floor', 'The crescent room')
+    cc3rd = Room('Campus Center Third Floor', 'A Mystery.')
 
     biconnect(mh353, 'east',  mh3rd)
     biconnect(mh3rd, 'down',  mh2nd)
@@ -58,21 +64,35 @@ def create_world ():
     biconnect(oval, 'north',  babson)
     biconnect(oval, 'west',  ac1st)
     biconnect(ac1st, 'north',  ac113)
+    
+    biconnect(babson,'north', bTrim)
+    biconnect(babson,'west', bHealth)
+    biconnect(babson,'east', bGym)
+    biconnect(cc2nd, 'down', cc1st)
+    biconnect(cc3rd, 'down', cc2nd)
+    
 
     # The player is the first 'thing' that has to be created
 
     Player('Blubbering-Fool', oval)
 
-    Radar('handy radar',mh353) 
-    Thing('blackboard', ac113)
-    Thing('lovely-trees', oval)
-    MobileThing('cs-book', oval)
-    MobileThing('math-book', oval)
+    Radar('handy radar',mh353, 'Can look at everything.') 
+    Thing('blackboard', ac113, 'You can write stuff on it')
+    Thing('lovely-trees', oval, 'It looks pretty lovely.')
+    
+    MobileThing('Weights',bGym,'Very heavy. Can throw at enemies.')
+    MobileThing('nerf gun',westh, 'Can shoot and kill people.')
+    Professor('Babo',bHealth,random.randint(1,5),2, 'Aggresive type')
+    Professor('Gabe the Babie', babson,random.randint(1,5),2, 'Submissive type.')
+    Thing('track', bGym, 'You can run on it.')
+    
+    MobileThing('cs-book', oval, 'Learn computer stuff.')
+    MobileThing('math-book', oval, 'Learn math stuff.')
 
     Computer('hal-9000', ac113)
     Computer('johnny-5', easth)
 
-    Professor('Riccardo',mh353,random.randint(1,5),2)
+    Professor('Riccardo',mh353,random.randint(1,5),2, 'The cool type.')
     
     homeworks = ['hw-1', 
                  'hw-2',
