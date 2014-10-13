@@ -74,23 +74,24 @@ def create_world ():
 
     # The player is the first 'thing' that has to be created
 
-    Player('Blubbering-Fool', oval)
+    Player('Blubbering-Fool', oval, "Hey! That's me!")
 
     Radar('handy radar',mh353, 'Can look at everything.') 
+    Radar('handy radar',oval, 'Can look at everything.') 
     Thing('blackboard', ac113, 'You can write stuff on it')
     Thing('lovely-trees', oval, 'It looks pretty lovely.')
     
     MobileThing('Weights',bGym,'Very heavy. Can throw at enemies.')
-    MobileThing('nerf gun',westh, 'Can shoot and kill people.')
-    Professor('Babo',bHealth,random.randint(1,5),2, 'Aggresive type')
-    Professor('Gabe the Babie', babson,random.randint(1,5),2, 'Submissive type.')
+    MobileThing('Nerf Gun',westh, 'Can shoot and kill people.')
+    NPC('Babo',bHealth,random.randint(1,5),random.randint(1,5),'Aggresive type')
+    NPC('Gabe-the-Babie',babson,random.randint(1,5),random.randint(1,5), 'Submissive type.')
     Thing('track', bGym, 'You can run on it.')
     
     MobileThing('cs-book', oval, 'Learn computer stuff.')
     MobileThing('math-book', oval, 'Learn math stuff.')
 
-    Computer('hal-9000', ac113)
-    Computer('johnny-5', easth)
+    Computer('hal-9000', ac113, "Android 1")
+    Computer('johnny-5', easth, "Android 2")
 
     Professor('Riccardo',mh353,random.randint(1,5),2, 'The cool type.')
     
@@ -103,7 +104,8 @@ def create_world ():
     
     for homework in homeworks:
         Homework(homework,
-                 random.choice(Room.rooms))
+                 random.choice(Room.rooms),
+                 "I'm due at midnight!")
 
     students = ['Frankie Freshman',
                 'Joe Junior',
@@ -114,7 +116,8 @@ def create_world ():
         NPC(student,
             random.choice(Room.rooms),
             random.randint(1,5),
-            random.randint(1,5))
+            random.randint(1,5),
+            "I came to learn")
 
     trolls = ['Polyphemus',
               'Gollum']
@@ -123,7 +126,8 @@ def create_world ():
       Troll(troll,
             random.choice(Room.rooms),
             random.randint(1,3),
-            random.randint(1,3))
+            random.randint(1,3),
+            "I'll eat your face!")
 
 
 VERBS = {

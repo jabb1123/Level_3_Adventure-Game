@@ -3,10 +3,9 @@ from player import *
 
 class Thing (WObject):
 
-    def __init__ (self,name,loc,description):
-        WObject.__init__(self,name)
+    def __init__ (self,name,loc,desc):
+        WObject.__init__(self,name, desc)
         self._location = loc
-        self.description = description
         loc.add_thing(self)
 
     def use (self,actor):

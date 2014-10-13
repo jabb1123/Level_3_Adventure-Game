@@ -13,8 +13,8 @@ class Player (Person):
     # static field representing the clock
     clock = Clock(0)
 
-    def __init__ (self,name,loc):
-        Person.__init__(self,name,loc)
+    def __init__ (self,name,loc, desc):
+        Person.__init__(self,name,loc, desc)
         Player.me = self
 
     # Grab any kind of thing from player's location, 
@@ -41,7 +41,7 @@ class Player (Person):
 
         print '------------------------------------------------------------'
         print 'You are in', loc.name()
-        print loc.description
+        print loc.describe()
 
         if all_stuff:
             print 'You see:', names(all_stuff)
@@ -57,6 +57,10 @@ class Player (Person):
             print 'Exits:', ', '.join([x for x in exits])
         else:
             print 'There are no exits'
+            
+    def look (self, obj):
+        print obj.name()
+        print obj.describe()
 
 
     def die (self):

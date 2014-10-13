@@ -1,10 +1,14 @@
 
 class WObject (object):
-    def __init__ (self,n):
+    def __init__ (self,n,desc):
         self._name = n.replace(' ', '-')
+        self._desc = desc
 
     def name (self):
         return self._name
+        
+    def describe(self):
+        return self._desc
       
     def is_thing (self):
         return False
