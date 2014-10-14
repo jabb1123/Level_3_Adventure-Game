@@ -61,8 +61,9 @@ class Player (Person):
     def look (self, obj):
         print obj.name()
         print obj.describe()
-
-
+        if obj.is_person():
+            print obj.contents()
+            
     def die (self):
         self.say('I am slain!')
         Person.die(self)
