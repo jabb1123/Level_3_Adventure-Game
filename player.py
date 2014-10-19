@@ -28,6 +28,9 @@ class Player (Person):
         for x in self.peek_around():
             if x.name() == name:
                 return x
+        for x in self.contents():
+            if x.name() == name:
+                return x
         return None
 
     def look_around (self):
@@ -59,10 +62,13 @@ class Player (Person):
             print 'There are no exits'
             
     def look (self, obj):
+        def names (lst):
+            return ', '.join([x.name() for x in lst])
         print obj.name()
         print obj.describe()
         if obj.is_person():
-            print obj.contents()
+            if obj.contents() != []:
+                print names(obj.contents())
             
     def die (self):
         self.say('I am slain!')

@@ -3,9 +3,10 @@ from mobile import *
 class Person (MobileThing):    # Container...
 
     def __init__ (self,name,loc, desc):
-        MobileThing.__init__(self,name,loc, desc)
+        MobileThing.__init__(self,name,loc,desc)
         self._max_health = 3
         self._health = self._max_health
+        self._contents = []
 
     def health (self):
         return self._health
@@ -32,8 +33,11 @@ class Person (MobileThing):    # Container...
     # same location as this person are holding/carrying
 
     def peek_around (self):
-        # FIX ME
-        return []
+        everyItem = []
+        for person in self.people_around():
+            for item in person.contents():
+                everyItem.append(item)
+        return everyItem
 
     def lose (self,t,loseto):
         self.say('I lose ' + t.name())
@@ -78,6 +82,7 @@ class Person (MobileThing):    # Container...
 
     def take (self,actor):
         actor.say('I am not strong enough to just take '+self.name())
+        
 
     def drop (self,actor):
         print actor.name(),'is not carrying',self.name()
@@ -90,3 +95,19 @@ class Person (MobileThing):    # Container...
 
     def is_person (self):
         return True
+    
+    def add_thing (self,t):
+        self._contents.append(t)
+
+    def del_thing (self,t):
+        self._contents = [x for x in self._contents if x is not t]
+    
+    def have_thing(self,thing):
+        for i in self.contents():
+            if i==thing:
+                return True
+        return False
+        
+    def contents(self):
+        return [x for x in self._contents]
+

@@ -74,10 +74,10 @@ def create_world ():
 
     # The player is the first 'thing' that has to be created
 
-    Player('Blubbering-Fool', oval, "Hey! That's me!")
+    Player('self', oval, "Hey! That's me!")
 
-    Radar('handy radar',mh353, 'Can look at everything.') 
-    Radar('handy radar',oval, 'Can look at everything.') 
+    Radar('handy-radar',mh353, 'Can look at everything.') 
+    Radar('handy-radar',oval, 'Can look at everything.') 
     Thing('blackboard', ac113, 'You can write stuff on it')
     Thing('lovely-trees', oval, 'It looks pretty lovely.')
     

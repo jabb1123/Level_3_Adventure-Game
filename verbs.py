@@ -96,7 +96,11 @@ class Use (Verb):
 class Take (Verb):
 
     def action1 (self,obj):
-        obj.take(Player.me)
+        obj.take1(Player.me)
+        return SAME_ROUND
+    
+    def action2 (self,obj1,obj2):
+        obj1.take2(Player.me,obj2)
         return SAME_ROUND
 
 class Drop (Verb):
