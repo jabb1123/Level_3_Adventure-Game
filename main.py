@@ -162,6 +162,13 @@ def read_player_input ():
             return response.split()
 
 
+def Store_reg_elements():
+    Player.clock.register(Player.clock.tick,1)
+    Player.clock.register(Player.clock.print_tick_action,1)
+    Player.clock.register(Player.me.look_around,1)
+    
+    
+    
 SAME_ROUND = 1
 NEXT_ROUND = 2  
   
@@ -173,15 +180,16 @@ def main ():
     # Create the world
     create_world()
     
+    Store_reg_elements()
     Player.me.look_around()
 
     while True:
         response = read_player_input ()
-        print
         if response[0] in VERBS:
             result = VERBS[response[0]].act(response[1:])
             if result == NEXT_ROUND:
-                Player.me.look_around()
+                Player.clock.call_regfunc()
+
         else:
             print 'What??'
             

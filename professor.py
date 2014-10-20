@@ -5,34 +5,32 @@ import sys
 
 class Professor (NPC):
 
-      def __init__ (self,name,loc,restlessness,professorial,desc):
-      	  NPC.__init__(self,name,loc,restlessness,100, desc)
-          self._professorial = professorial
+  def __init__ (self,name,loc,restlessness,professorial,desc):
+      NPC.__init__(self,name,loc,restlessness,100, desc)
+      self._professorial = professorial
 
-      _topics = ['Turing machines',
-                 'the lambda calculus',
-                 'Godel']
+  _topics = ['Turing machines',
+             'the lambda calculus',
+             'Godel']
 
-      def lecture (self,time):
-        if not self.is_in_limbo():
-          if random.randrange(self._professorial) == 0:
-              if self.people_around():
-                  self.location().report(self.name()+' starts lecturing about '+random.choice(self._topics))
-              else:
-                  self.location().report(self.name()+' mutters to himself about '+random.choice(self._topics))
-    
-      def grade_homework(self,hw,actor):
-          self.say( "Hmmm.... Let's check this homework.")
-          if hw.check_done_homework:
-              self.say("mmm.... Very nice....")
-              self.say("You win!!!")
-              sys.exit(0)
-          else:
-              self.say("Wait... This homework is not even started!!")
-              hw.give(self,actor)
-              
-              
-          self.contents()
+  def lecture (self,time):
+    if not self.is_in_limbo():
+      if random.randrange(self._professorial) == 0:
+         if self.people_around():
+             self.location().report(self.name()+' starts lecturing about '+random.choice(self._topics))
+         else:
+             self.location().report(self.name()+' mutters to himself about '+random.choice(self._topics))
+
+  def grade_homework(self,hw,actor):
+      self.say( "Hmmm.... Let's check this homework.")
+      if hw.check_done_homework():
+          self.say("mmm.... Very nice....")
+          self.say("You win!!!")
+          sys.exit(0)
+      else:
+          self.say("Wait... This homework is not even started!!")
+          hw.give(self,actor)
           
-      def is_professor(self):
-          return True
+          
+  def is_professor(self):
+      return True
