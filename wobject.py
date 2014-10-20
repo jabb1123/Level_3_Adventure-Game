@@ -19,6 +19,9 @@ class WObject (object):
     def is_person (self):
         return False
 
+    def is_troll (self):
+        return False
+
     def is_room (self):
         return False
 
