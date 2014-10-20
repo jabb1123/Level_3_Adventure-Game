@@ -29,7 +29,9 @@ class Person (MobileThing):    # Container...
         return [x for x in self.location().contents() 
         if x.is_professor() and x is not self]
                         
-
+    def trolls_around (self):
+        return [x for x in self.location().contents() 
+        if x.is_troll() and x is not self]
 
     def stuff_around (self):
         return [x for x in self.location().contents() if not x.is_person()]

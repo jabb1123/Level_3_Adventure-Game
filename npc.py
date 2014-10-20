@@ -15,10 +15,6 @@ class NPC (Person):
                 self.move_somewhere()
             if random.randrange(self._miserly) == 0:
                 self.take_something()
-                
-    def trolls_around (self):
-        return [x for x in self.location().contents() 
-        if x.is_troll() and x is not self]
 
     def move_somewhere (self):
         exits = self.location().exits()

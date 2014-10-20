@@ -60,7 +60,11 @@ class Player (Person):
             print 'Exits:', ', '.join([x for x in exits])
         else:
             print 'There are no exits'
-            
+        
+        print 
+        print "Events:"
+        print
+        
     def look (self, obj):
         def names (lst):
             return ', '.join([x.name() for x in lst])

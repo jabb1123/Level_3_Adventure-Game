@@ -10,6 +10,7 @@ from troll import *
 from professor import *
 from homework import *
 from computer import *
+from trollhunter import *
 
 
 REVERSE = {
@@ -76,61 +77,90 @@ def create_world ():
 
     Player('self', oval, "Hey! That's me!")
 
-    Radar('handy-radar',mh353, 'Can look at everything.') 
-    Radar('handy-radar',oval, 'Can look at everything.') 
-    Thing('blackboard', ac113, 'You can write stuff on it')
-    Thing('lovely-trees', oval, 'It looks pretty lovely.')
+    radar1= Radar('handy-radar',mh353, 'Can look at everything.') 
+    radar2= Radar('handy-radar',oval, 'Can look at everything.') 
+    thing1= Thing('blackboard', ac113, 'You can write stuff on it')
+    thing2= Thing('lovely-trees', oval, 'It looks pretty lovely.')
+    thing3= Thing('track', bGym, 'You can run on it.')
     
-    MobileThing('Weights',bGym,'Very heavy. Can throw at enemies.')
-    MobileThing('Nerf Gun',westh, 'Can shoot and kill people.')
-    NPC('Babo',bHealth,random.randint(1,5),random.randint(1,5),'Aggresive type')
-    NPC('Gabe-the-Babie',babson,random.randint(1,5),random.randint(1,5), 'Submissive type.')
-    Thing('track', bGym, 'You can run on it.')
+    mob1= MobileThing('Weights',bGym,'Very heavy. Can throw at enemies.')
+    mob2= MobileThing('Nerf Gun',westh, 'Can shoot and kill people.')
+    npc1= NPC('Babo',bHealth,random.randint(1,5),random.randint(1,5),'Aggresive type')
+    npc2= NPC('Gabe-the-Babie',babson,random.randint(1,5),random.randint(1,5), 'Submissive type.')
     
-    MobileThing('cs-book', oval, 'Learn computer stuff.')
-    MobileThing('math-book', oval, 'Learn math stuff.')
+    
+    mob3=MobileThing('cs-book', oval, 'Learn computer stuff.')
+    mob4=MobileThing('math-book', oval, 'Learn math stuff.')
 
-    Computer('Laptop', oval, "Android 1")
-    Computer('computer', easth, "Android 2")
-    Homework('hw-0',oval,'it is')
+    comp1= Computer('Laptop', oval, "Android 1")
+    comp2= Computer('computer', easth, "Android 2")
+    hw0= Homework('hw-0',oval,'it is')
                  
-    Professor('Superman', oval,3,2,"superguy.")
-    Professor('Riccardo',mh353,random.randint(1,5),2, 'The cool type.')
+    prof1= Professor('Superman', oval,3,2,"superguy.")
+    prof2= Professor('Riccardo',mh353,random.randint(1,5),2, 'The cool type.')
     
-    homeworks = ['hw-1', 
-                 'hw-2',
-                 'hw-3',
-                 'hw-4',
-                 'hw-5',
-                 'hw-6']
+    hw1 = Homework('hw-1',random.choice(Room.rooms),"I'm due at midnight!")
+    hw2 = Homework('hw-2',random.choice(Room.rooms),"I'm due at midnight!")
+    hw3 = Homework('hw-3',random.choice(Room.rooms),"I'm due at midnight!")
+    hw4 = Homework('hw-4',random.choice(Room.rooms),"I'm due at midnight!")
+    hw5 = Homework('hw-5',random.choice(Room.rooms),"I'm due at midnight!")
+    hw6 = Homework('hw-6',random.choice(Room.rooms),"I'm due at midnight!")
+
+    stud1= NPC('Frankie Freshman',random.choice(Room.rooms),random.randint(1,5),random.randint(1,5), "I came to learn")
+    stud2= NPC('Joe Junior',random.choice(Room.rooms),random.randint(1,5),random.randint(1,5), "I came to learn")
+    stud3= NPC('Sophie Sophomore',random.choice(Room.rooms),random.randint(1,5),random.randint(1,5), "I came to learn")
+    stud4= NPC('Cedric Senior',random.choice(Room.rooms),random.randint(1,5),random.randint(1,5), "I came to learn")
+
+    troll1 = Troll('Polyphemus',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+    troll2 = Troll('Gollum',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+    troll3 = Troll('Polyphemus',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+    troll4 = Troll('Gollum',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+    troll5 = Troll('Polyphemus',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+    troll6 = Troll('Gollum',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+
+    trollhunt1= TrollHunter('Killer',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I kill them trolls!")
+    trollhunt2= TrollHunter('Hunter',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I kill them trolls!")
+    trollhunt3= TrollHunter('Death',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I kill them trolls!")
+    trollhunt4= TrollHunter('Van',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I kill them trolls!")
     
-    for homework in homeworks:
-        Homework(homework,
-                 random.choice(Room.rooms),
-                 "I'm due at midnight!")
+    def Store_reg_elements():
+        current_time = Player.clock.time()
+        Player.clock.register(Player.clock.tick,1,None)
+        Player.clock.register(Player.clock.print_tick_action,1,None)
+        Player.clock.register(Player.me.look_around,1,None)
+        
+        Player.clock.register(troll1.move_and_take_stuff,1,current_time)
+        Player.clock.register(troll2.move_and_take_stuff,1,current_time)
+        Player.clock.register(troll3.move_and_take_stuff,1,current_time)
+        Player.clock.register(troll4.move_and_take_stuff,1,current_time)
+        Player.clock.register(troll5.move_and_take_stuff,1,current_time)
+        Player.clock.register(troll6.move_and_take_stuff,1,current_time)
+        Player.clock.register(trollhunt1.move_and_take_stuff,1,current_time)
+        Player.clock.register(trollhunt2.move_and_take_stuff,1,current_time)
+        Player.clock.register(trollhunt3.move_and_take_stuff,1,current_time)
+        Player.clock.register(trollhunt4.move_and_take_stuff,1,current_time)
+        Player.clock.register(prof1.move_and_take_stuff,1,current_time)
+        Player.clock.register(prof2.move_and_take_stuff,1,current_time)
+        Player.clock.register(stud1.move_and_take_stuff,1,current_time)
+        Player.clock.register(stud2.move_and_take_stuff,1,current_time)
+        Player.clock.register(stud3.move_and_take_stuff,1,current_time)
+        Player.clock.register(stud4.move_and_take_stuff,1,current_time)
+        
+        Player.clock.register(troll1.eat_people,2,current_time)
+        Player.clock.register(troll2.eat_people,2,current_time)
+        Player.clock.register(troll3.eat_people,2,current_time)
+        Player.clock.register(troll4.eat_people,2,current_time)
+        Player.clock.register(troll5.eat_people,2,current_time)
+        Player.clock.register(troll6.eat_people,2,current_time)
+        Player.clock.register(prof1.lecture,2,current_time)
+        Player.clock.register(prof2.lecture,2,current_time)
+        Player.clock.register(trollhunt1.kill_trolls,2,current_time)
+        Player.clock.register(trollhunt2.kill_trolls,2,current_time)
+        Player.clock.register(trollhunt3.kill_trolls,2,current_time)
+        Player.clock.register(trollhunt4.kill_trolls,2,current_time)
 
-    students = ['Frankie Freshman',
-                'Joe Junior',
-                'Sophie Sophomore',
-                'Cedric Senior']
-
-    for student in students:
-        NPC(student,
-            random.choice(Room.rooms),
-            random.randint(1,5),
-            random.randint(1,5),
-            "I came to learn")
-
-    trolls = ['Polyphemus',
-              'Gollum']
-
-    for troll in trolls:
-      Troll(troll,
-            random.choice(Room.rooms),
-            random.randint(1,3),
-            random.randint(1,3),
-            "I'll eat your face!")
-
+        
+    Store_reg_elements()
 
 VERBS = {
     'quit' : Quit(),
@@ -161,12 +191,43 @@ def read_player_input ():
         if len(response)>0:
             return response.split()
 
-
+"""
 def Store_reg_elements():
-    Player.clock.register(Player.clock.tick,1)
-    Player.clock.register(Player.clock.print_tick_action,1)
-    Player.clock.register(Player.me.look_around,1)
+    current_time = Player.clock.time()
+    Player.clock.register(Player.clock.tick,1,None)
+    Player.clock.register(Player.clock.print_tick_action,1,None)
+    Player.clock.register(Player.me.look_around,1,None)
     
+    Player.clock.register(troll1.move_and_take_stuff,1,current_time)
+    Player.clock.register(troll2.move_and_take_stuff,1,current_time)
+    Player.clock.register(troll3.move_and_take_stuff,1,current_time)
+    Player.clock.register(troll4.move_and_take_stuff,1,current_time)
+    Player.clock.register(troll5.move_and_take_stuff,1,current_time)
+    Player.clock.register(troll6.move_and_take_stuff,1,current_time)
+    Player.clock.register(trollhunt1.move_and_take_stuff,1,current_time)
+    Player.clock.register(trollhunt2.move_and_take_stuff,1,current_time)
+    Player.clock.register(trollhunt3.move_and_take_stuff,1,current_time)
+    Player.clock.register(trollhunt4.move_and_take_stuff,1,current_time)
+    Player.clock.register(prof1.move_and_take_stuff,1,current_time)
+    Player.clock.register(prof2.move_and_take_stuff,1,current_time)
+    Player.clock.register(stud1.move_and_take_stuff,1,current_time)
+    Player.clock.register(stud2.move_and_take_stuff,1,current_time)
+    Player.clock.register(stud3.move_and_take_stuff,1,current_time)
+    Player.clock.register(stud4.move_and_take_stuff,1,current_time)
+    
+    Player.clock.register(troll1.eat_people,2,current_time)
+    Player.clock.register(troll2.eat_people,2,current_time)
+    Player.clock.register(troll3.eat_people,2,current_time)
+    Player.clock.register(troll4.eat_people,2,current_time)
+    Player.clock.register(troll5.eat_people,2,current_time)
+    Player.clock.register(troll6.eat_people,2,current_time)
+    Player.clock.register(prof1.lecture,2,current_time)
+    Player.clock.register(prof2.lecture,2,current_time)
+    Player.clock.register(trollhunt1.kill_trolls,2,current_time)
+    Player.clock.register(trollhunt2.kill_trolls,2,current_time)
+    Player.clock.register(trollhunt3.kill_trolls,2,current_time)
+    Player.clock.register(trollhunt4.kill_trolls,2,current_time)
+"""    
     
     
 SAME_ROUND = 1
@@ -180,7 +241,7 @@ def main ():
     # Create the world
     create_world()
     
-    Store_reg_elements()
+    #Store_reg_elements()
     Player.me.look_around()
 
     while True:
