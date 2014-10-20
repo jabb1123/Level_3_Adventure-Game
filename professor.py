@@ -1,6 +1,7 @@
 from player import *
 from npc import *
 import random
+import sys
 
 class Professor (NPC):
 
@@ -19,3 +20,19 @@ class Professor (NPC):
                   self.location().report(self.name()+' starts lecturing about '+random.choice(self._topics))
               else:
                   self.location().report(self.name()+' mutters to himself about '+random.choice(self._topics))
+    
+      def grade_homework(self,hw,actor):
+          self.say( "Hmmm.... Let's check this homework.")
+          if hw.check_done_homework:
+              self.say("mmm.... Very nice....")
+              self.say("You win!!!")
+              sys.exit(0)
+          else:
+              self.say("Wait... This homework is not even started!!")
+              hw.give(self,actor)
+              
+              
+          self.contents()
+          
+      def is_professor(self):
+          return True

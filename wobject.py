@@ -24,3 +24,6 @@ class WObject (object):
 
     def is_homework (self):
         return False
+        
+    def set_Name(self, _name):
+        self._name = _name

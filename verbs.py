@@ -115,7 +115,25 @@ class Drop (Verb):
 class Give (Verb):
 
     def action2 (self,obj1,obj2):
-        obj1.give(Player.me,obj2)
+        if obj1.is_homework() and obj2.is_professor():
+            obj1.give(Player.me,obj2)
+            
+        else:
+            obj1.give(Player.me,obj2)
         return SAME_ROUND
+"""
+class Check(Verb):
+    def action1(self,obj):
+        obj.check_done_homework()
+        return SAME_ROUND
+"""       
+        
+        
+        
+        
+        
+        
+        
+    
 
         

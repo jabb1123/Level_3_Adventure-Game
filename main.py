@@ -90,9 +90,11 @@ def create_world ():
     MobileThing('cs-book', oval, 'Learn computer stuff.')
     MobileThing('math-book', oval, 'Learn math stuff.')
 
-    Computer('hal-9000', ac113, "Android 1")
-    Computer('johnny-5', easth, "Android 2")
-
+    Computer('Laptop', oval, "Android 1")
+    Computer('computer', easth, "Android 2")
+    Homework('hw-0',oval,'it is')
+                 
+    Professor('Superman', oval,3,2,"superguy.")
     Professor('Riccardo',mh353,random.randint(1,5),2, 'The cool type.')
     
     homeworks = ['hw-1', 
@@ -145,6 +147,7 @@ VERBS = {
     'west' : Direction('west'),
     'up'   : Direction('up'),
     'down' : Direction('down')
+    #,'check': Check()
 }
   
 
