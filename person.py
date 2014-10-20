@@ -22,13 +22,12 @@ class Person (MobileThing):    # Container...
         self.say('Yaaaaah! I am upset!')
 
     def people_around (self):
-        return [x for x in self.location().contents() if x.is_person() and x is not self]
-                        
-    def trolls_around (self):
-        return [x for x in self.location().contents() if x.is_troll() and x is not self]
+        return [x for x in self.location().contents() 
+        if x.is_person() and x is not self]
                         
     def professors_around (self):
-        return [x for x in self.location().contents() if x.is_professor() and x is not self]
+        return [x for x in self.location().contents() 
+        if x.is_professor() and x is not self]
                         
 
 
@@ -102,6 +101,7 @@ class Person (MobileThing):    # Container...
 
     def is_person (self):
         return True
+        
     
     def add_thing (self,t):
         self._contents.append(t)
