@@ -117,7 +117,7 @@ class Give (Verb):
     def action2 (self,obj1,obj2):
         if obj1.is_homework() and obj2.is_professor():
             obj1.give(Player.me,obj2)
-            
+            obj2.grade_homework(obj1,Player.me)
         else:
             obj1.give(Player.me,obj2)
         return SAME_ROUND
