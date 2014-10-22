@@ -1,10 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 21 21:05:57 2014
-
-@author: jmorris
-"""
-
+from player import *
 from npc import *
 
 class Dragon(NPC):
@@ -14,6 +8,8 @@ class Dragon(NPC):
         self._health = self._max_health
         self.restlessness = restlessness
         self._rage = 2
+        Player.clock.register(self.burn_everything,1,Player.clock.time)
+        Player.clock.register(self.move_somewhere,1,Player.clock.time)
     
 
     def burn_everything (self,time):
@@ -37,6 +33,8 @@ class Dragon(NPC):
 
     def die (self):
         self.say('How dare you slay me!! AAAAAHHHHHHHHHHHHHH!!!!!!')
+        Player.clock.unregister(self.burn_everything,1,Player.clock.time)
+        Player.clock.unregister(self.move_somewhere,1,Player.clock.time)
         self.destroy()
         print "You have slain the dragon. You gain the dragon sword and the dragon shield."
         DragonSword = WeaponAndArmor("Dragon Sword",Player.me.location(),"The most powerful sword in the game. Burns everyone. +100 Str",100,0)

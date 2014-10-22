@@ -133,23 +133,25 @@ def create_world ():
     BadNinja('stealth',oval,random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
     BadNinja('stealth',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
     
-    dragon1 = Dragon('Smaug',random.choice(Room.rooms),random.randint(1,3),random.randint(1,2),"Most powerful enemy. Known to burn everything when angry. You need the Dragon shield to protect yourself from it." )
+    Dragon('Smaug',random.choice(Room.rooms),random.randint(1,3),random.randint(1,2),"Most powerful enemy. Known to burn everything when angry. You need the Dragon shield to protect yourself from it." )
 
-    weapon1 = WeaponAndArmor("ShortSword",oval,"Weakest weapon. Strong enough to kill trolls in one blow. +3 str",3,0)
-    weapon2 = WeaponAndArmor("LongSword",random.choice(Room.rooms),"fairly strong weapon. Strong enough to kill badNinjas in one blow. +5 str",5,0)
-    weapon3 = WeaponAndArmor("Katana",random.choice(Room.rooms),"A very powerful weapon. You now have a fighting chance against a dragon, but not really.",10,0)
-    weapon4 = WeaponAndArmor("Rocket Launcher",mh353,"A cheat weapon. Strong enough to kill anyone in one blow.",50,0)
-    armor1 = WeaponAndArmor("leather armor",oval,"Weakest armor. Strong enough to withstand troll bites a little. +3 def",0,5)
-    armor2 = WeaponAndArmor("steel armor",random.choice(Room.rooms),"fairly strong armor. Strong enough to withstand troll bites for a while. +5 def",0,5)
-    armor3 = WeaponAndArmor("golden armor",random.choice(Room.rooms),"A very powerful armor. You now have a fighting chance against a dragon, but not really. +20 def",0,20)
-    armor4 = WeaponAndArmor("Fire Proof suit",mh353,"A cheat armor. Strong enough to withstand anything.",0,100)
+    WeaponAndArmor("ShortSword",oval,"Weakest weapon. Strong enough to kill trolls in one blow. +3 str",3,0)
+    WeaponAndArmor("LongSword",random.choice(Room.rooms),"fairly strong weapon. Strong enough to kill badNinjas in one blow. +5 str",5,0)
+    WeaponAndArmor("Katana",random.choice(Room.rooms),"A very powerful weapon. You now have a fighting chance against a dragon, but not really.",10,0)
+    WeaponAndArmor("Rocket Launcher",mh353,"A cheat weapon. Strong enough to kill anyone in one blow.",50,0)
+    WeaponAndArmor("leather armor",oval,"Weakest armor. Strong enough to withstand troll bites a little. +3 def",0,5)
+    WeaponAndArmor("steel armor",random.choice(Room.rooms),"fairly strong armor. Strong enough to withstand troll bites for a while. +5 def",0,5)
+    WeaponAndArmor("golden armor",random.choice(Room.rooms),"A very powerful armor. You now have a fighting chance against a dragon, but not really. +20 def",0,20)
+    WeaponAndArmor("Fire Proof suit",mh353,"A cheat armor. Strong enough to withstand anything.",0,100)
     
     def Store_reg_elements():
-        current_time = Player.clock.time()
         Player.clock.register(Player.clock.tick,1,None)
         Player.clock.register(Player.clock.print_tick_action,1,None)
         Player.clock.register(Player.me.look_around,3,None)        
+        
     Store_reg_elements()
+    
+    
 VERBS = {
     'quit' : Quit(),
     'look' : Look(),
