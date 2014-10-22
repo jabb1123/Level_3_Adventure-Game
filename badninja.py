@@ -33,25 +33,6 @@ class BadNinja(NPC):
                     self.say("Burn all homework!!.")
                     content.destroy()
                     print content.name()+" was destroyed."
-<<<<<<< HEAD
-
-
+                    
     def is_badninja():
         return True
-=======
-            
-            
-            
-            
-            
->>>>>>> 69e90386544f36ad8ba41c04804f3a6035a744f5
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        
