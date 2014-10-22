@@ -11,6 +11,8 @@ from npc import *
 class BadNinja(NPC):
     def __init__(self,name,loc,restlessness,miserly,desc):
         NPC.__init__(self,name,loc,restlessness,3, desc)
+        self._max_health = 10
+        self._health = self._max_health
         self.miserly = miserly
     
     def steal(self,time):
@@ -33,34 +35,6 @@ class BadNinja(NPC):
             
             
             
-   
-            
-    """    
-     def move_and_take_stuff (self,time):
-        if not self.is_in_limbo():
-            if random.randrange(self._restlessness) == 0:
-                self.move_somewhere()
-            if random.randrange(self._miserly) == 0:
-                self.take_something()
-
-
-    def take_something (self):
-        everything = []
-        everything.extend(self.stuff_around())
-        everything.extend(self.peek_around())
-        if everything:
-            something = random.choice(everything)
-            something.take(self)
-    
-    def use (self,actor):
-        for content in actor.contents():
-            if content.is_homework():
-                actor.say('I use '+self.name()+' and it completes my '+ content.name())
-                content.is_done_homework()
-                old_name = content.name()
-                content.set_Name("done-"+old_name)
-    """
-                  
             
             
             
