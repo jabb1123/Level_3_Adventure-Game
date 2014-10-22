@@ -16,6 +16,8 @@ class Player (Person):
     def __init__ (self,name,loc, desc):
         Person.__init__(self,name,loc, desc)
         Player.me = self
+        self._max_health = 5
+        self._health = self._max_health
 
     # Grab any kind of thing from player's location, 
     # given its name.  The thing may be in the possession of

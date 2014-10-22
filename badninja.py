@@ -11,6 +11,8 @@ from player import *
 class BadNinja(NPC):
     def __init__(self,name,loc,restlessness,miserly,desc):
         NPC.__init__(self,name,loc,restlessness,3, desc)
+        self._max_health = 10
+        self._health = self._max_health
         self.miserly = miserly
         Player.clock.register(self.steal,2,Player.clock.time)
     
@@ -31,10 +33,18 @@ class BadNinja(NPC):
                     self.say("Burn all homework!!.")
                     content.destroy()
                     print content.name()+" was destroyed."
+<<<<<<< HEAD
 
 
     def is_badninja():
         return True
+=======
+            
+            
+            
+            
+            
+>>>>>>> 69e90386544f36ad8ba41c04804f3a6035a744f5
             
             
             
