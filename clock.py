@@ -36,11 +36,10 @@ class Clock (object):
             previous_funcs.remove((func_name,target))
             self.regfunc[priority] = previous_funcs
             
-    def call_regfunc(self):
+    def call_regfunc(self,time):
         for key in self.regfunc.keys():
             for func in self.regfunc[key]:
                 if func[1] == None:
                     func[0]()
                 else:
-                    func[0](func[1])
-        
+                    func[0](time)

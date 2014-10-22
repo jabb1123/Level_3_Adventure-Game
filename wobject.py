@@ -7,6 +7,12 @@ class WObject (object):
     def name (self):
         return self._name
         
+    def setName(self, name):
+        self._name = name
+        
+    def setDesc(self,desc):
+        self._desc = desc
+    
     def describe(self):
         return self._desc
       

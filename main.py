@@ -11,6 +11,7 @@ from professor import *
 from homework import *
 from computer import *
 from trollhunter import *
+from caterpillar import *
 
 
 REVERSE = {
@@ -112,16 +113,18 @@ def create_world ():
     stud4= NPC('Cedric Senior',random.choice(Room.rooms),random.randint(1,5),random.randint(1,5), "I came to learn")
 
     troll1 = Troll('Polyphemus',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
-    troll2 = Troll('Gollum',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
-    troll3 = Troll('Polyphemus',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
-    troll4 = Troll('Gollum',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
-    troll5 = Troll('Polyphemus',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
-    troll6 = Troll('Gollum',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+    troll2 = Troll('Jack',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+    troll3 = Troll('Beast',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+    troll4 = Troll('Red',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+    troll5 = Troll('Black',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
+    troll6 = Troll('Atterns',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I'll eat your face!")
 
     trollhunt1= TrollHunter('Killer',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I kill them trolls!")
     trollhunt2= TrollHunter('Hunter',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I kill them trolls!")
     trollhunt3= TrollHunter('Death',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I kill them trolls!")
     trollhunt4= TrollHunter('Van',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I kill them trolls!")
+    
+    cat1 = Caterpillar(0,'Stinger', oval, "He's such a cute little bug!")
     
     def Store_reg_elements():
         current_time = Player.clock.time()
@@ -145,6 +148,7 @@ def create_world ():
         Player.clock.register(stud2.move_and_take_stuff,1,current_time)
         Player.clock.register(stud3.move_and_take_stuff,1,current_time)
         Player.clock.register(stud4.move_and_take_stuff,1,current_time)
+        Player.clock.register(cat1.new_age,1,current_time)
         
         Player.clock.register(troll1.eat_people,2,current_time)
         Player.clock.register(troll2.eat_people,2,current_time)
@@ -158,6 +162,8 @@ def create_world ():
         Player.clock.register(trollhunt2.kill_trolls,1,current_time)
         Player.clock.register(trollhunt3.kill_trolls,1,current_time)
         Player.clock.register(trollhunt4.kill_trolls,1,current_time)
+        Player.clock.register(cat1.transform,2,None)
+        
 
         
     Store_reg_elements()
@@ -190,44 +196,6 @@ def read_player_input ():
         response = raw_input('\nWhat is thy bidding? ')
         if len(response)>0:
             return response.split()
-
-"""
-def Store_reg_elements():
-    current_time = Player.clock.time()
-    Player.clock.register(Player.clock.tick,1,None)
-    Player.clock.register(Player.clock.print_tick_action,1,None)
-    Player.clock.register(Player.me.look_around,1,None)
-    
-    Player.clock.register(troll1.move_and_take_stuff,1,current_time)
-    Player.clock.register(troll2.move_and_take_stuff,1,current_time)
-    Player.clock.register(troll3.move_and_take_stuff,1,current_time)
-    Player.clock.register(troll4.move_and_take_stuff,1,current_time)
-    Player.clock.register(troll5.move_and_take_stuff,1,current_time)
-    Player.clock.register(troll6.move_and_take_stuff,1,current_time)
-    Player.clock.register(trollhunt1.move_and_take_stuff,1,current_time)
-    Player.clock.register(trollhunt2.move_and_take_stuff,1,current_time)
-    Player.clock.register(trollhunt3.move_and_take_stuff,1,current_time)
-    Player.clock.register(trollhunt4.move_and_take_stuff,1,current_time)
-    Player.clock.register(prof1.move_and_take_stuff,1,current_time)
-    Player.clock.register(prof2.move_and_take_stuff,1,current_time)
-    Player.clock.register(stud1.move_and_take_stuff,1,current_time)
-    Player.clock.register(stud2.move_and_take_stuff,1,current_time)
-    Player.clock.register(stud3.move_and_take_stuff,1,current_time)
-    Player.clock.register(stud4.move_and_take_stuff,1,current_time)
-    
-    Player.clock.register(troll1.eat_people,2,current_time)
-    Player.clock.register(troll2.eat_people,2,current_time)
-    Player.clock.register(troll3.eat_people,2,current_time)
-    Player.clock.register(troll4.eat_people,2,current_time)
-    Player.clock.register(troll5.eat_people,2,current_time)
-    Player.clock.register(troll6.eat_people,2,current_time)
-    Player.clock.register(prof1.lecture,2,current_time)
-    Player.clock.register(prof2.lecture,2,current_time)
-    Player.clock.register(trollhunt1.kill_trolls,2,current_time)
-    Player.clock.register(trollhunt2.kill_trolls,2,current_time)
-    Player.clock.register(trollhunt3.kill_trolls,2,current_time)
-    Player.clock.register(trollhunt4.kill_trolls,2,current_time)
-"""    
     
     
 SAME_ROUND = 1
@@ -249,7 +217,7 @@ def main ():
         if response[0] in VERBS:
             result = VERBS[response[0]].act(response[1:])
             if result == NEXT_ROUND:
-                Player.clock.call_regfunc()
+                Player.clock.call_regfunc(Player.clock.time())
 
         else:
             print 'What??'
