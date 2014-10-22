@@ -12,6 +12,8 @@ from homework import *
 from computer import *
 from trollhunter import *
 from caterpillar import *
+from badninja import *
+
 
 
 REVERSE = {
@@ -126,11 +128,15 @@ def create_world ():
     
     cat1 = Caterpillar(0,'Stinger', oval, "He's such a cute little bug!")
     
+    badninja1 = BadNinja('stealth',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
+    badninja2 = BadNinja('stealth',oval,random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
+    badninja3 = BadNinja('stealth',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
+    
     def Store_reg_elements():
         current_time = Player.clock.time()
         Player.clock.register(Player.clock.tick,1,None)
         Player.clock.register(Player.clock.print_tick_action,1,None)
-        Player.clock.register(Player.me.look_around,1,None)
+        Player.clock.register(Player.me.look_around,3,None)
         
         Player.clock.register(troll1.move_and_take_stuff,1,current_time)
         Player.clock.register(troll2.move_and_take_stuff,1,current_time)
@@ -164,6 +170,10 @@ def create_world ():
         Player.clock.register(trollhunt4.kill_trolls,1,current_time)
         Player.clock.register(cat1.transform,2,None)
         
+        
+        Player.clock.register(badninja1.steal,1,current_time)
+        Player.clock.register(badninja2.steal,1,current_time)
+        Player.clock.register(badninja3.steal,1,current_time)
 
         
     Store_reg_elements()
@@ -218,7 +228,7 @@ def main ():
             result = VERBS[response[0]].act(response[1:])
             if result == NEXT_ROUND:
                 Player.clock.call_regfunc(Player.clock.time())
-
+                print 
         else:
             print 'What??'
             
