@@ -1,16 +1,21 @@
 import random
 from npc import *
+from player import *
 
 class TrollHunter(NPC):
     def __init__ (self,name,loc,restlessness,rage,desc):
         NPC.__init__(self,name,loc,restlessness,10, desc)
         self._rage = rage
+        Player.clock.register(self.kill_trolls,1,Player.clock.time)
         
     def rage(self):
         return self._rage
         
     def set_rage(self,rage):
         self._rage = rage
+        
+    def is_trollhunter():
+        return True
         
     def kill_trolls (self,time):
       if not self.is_in_limbo():

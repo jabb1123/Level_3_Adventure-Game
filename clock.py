@@ -42,4 +42,4 @@ class Clock (object):
                 if func[1] == None:
                     func[0]()
                 else:
-                    func[0](time)
+                    func[0](func[1]())

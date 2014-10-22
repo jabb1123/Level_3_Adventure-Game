@@ -33,6 +33,18 @@ class WObject (object):
 
     def is_homework (self):
         return False
+    
+    def is_trollhunter():
+        return False
         
+    def is_professor():
+        return False
+    
+    def is_butterfly():
+        return False
+        
+    def is_badninja():
+        return False
+    
     def set_Name(self, _name):
         self._name = _name
