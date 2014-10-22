@@ -19,7 +19,7 @@ class TrollHunter(NPC):
             if troll:
                 prey = random.choice(troll)
                 self.location().report(self.name() + ' hunts down ' + prey.name())
-                prey.suffer(random.randint(1,3))
+                prey.suffer(random.randint(1,5))
             else:
                 self.location().report(self.name() + " is full of rage!!!")
 

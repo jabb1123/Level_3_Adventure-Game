@@ -11,6 +11,7 @@ from professor import *
 from homework import *
 from computer import *
 from trollhunter import *
+from badninja import *
 
 
 REVERSE = {
@@ -123,11 +124,15 @@ def create_world ():
     trollhunt3= TrollHunter('Death',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I kill them trolls!")
     trollhunt4= TrollHunter('Van',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"I kill them trolls!")
     
+    badninja1 = BadNinja('stealth',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
+    badninja2 = BadNinja('stealth',oval,random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
+    badninja3 = BadNinja('stealth',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
+    
     def Store_reg_elements():
         current_time = Player.clock.time()
         Player.clock.register(Player.clock.tick,1,None)
         Player.clock.register(Player.clock.print_tick_action,1,None)
-        Player.clock.register(Player.me.look_around,1,None)
+        Player.clock.register(Player.me.look_around,3,None)
         
         Player.clock.register(troll1.move_and_take_stuff,1,current_time)
         Player.clock.register(troll2.move_and_take_stuff,1,current_time)
@@ -158,6 +163,10 @@ def create_world ():
         Player.clock.register(trollhunt2.kill_trolls,1,current_time)
         Player.clock.register(trollhunt3.kill_trolls,1,current_time)
         Player.clock.register(trollhunt4.kill_trolls,1,current_time)
+        
+        Player.clock.register(badninja1.steal,1,current_time)
+        Player.clock.register(badninja2.steal,1,current_time)
+        Player.clock.register(badninja3.steal,1,current_time)
 
         
     Store_reg_elements()
@@ -190,44 +199,6 @@ def read_player_input ():
         response = raw_input('\nWhat is thy bidding? ')
         if len(response)>0:
             return response.split()
-
-"""
-def Store_reg_elements():
-    current_time = Player.clock.time()
-    Player.clock.register(Player.clock.tick,1,None)
-    Player.clock.register(Player.clock.print_tick_action,1,None)
-    Player.clock.register(Player.me.look_around,1,None)
-    
-    Player.clock.register(troll1.move_and_take_stuff,1,current_time)
-    Player.clock.register(troll2.move_and_take_stuff,1,current_time)
-    Player.clock.register(troll3.move_and_take_stuff,1,current_time)
-    Player.clock.register(troll4.move_and_take_stuff,1,current_time)
-    Player.clock.register(troll5.move_and_take_stuff,1,current_time)
-    Player.clock.register(troll6.move_and_take_stuff,1,current_time)
-    Player.clock.register(trollhunt1.move_and_take_stuff,1,current_time)
-    Player.clock.register(trollhunt2.move_and_take_stuff,1,current_time)
-    Player.clock.register(trollhunt3.move_and_take_stuff,1,current_time)
-    Player.clock.register(trollhunt4.move_and_take_stuff,1,current_time)
-    Player.clock.register(prof1.move_and_take_stuff,1,current_time)
-    Player.clock.register(prof2.move_and_take_stuff,1,current_time)
-    Player.clock.register(stud1.move_and_take_stuff,1,current_time)
-    Player.clock.register(stud2.move_and_take_stuff,1,current_time)
-    Player.clock.register(stud3.move_and_take_stuff,1,current_time)
-    Player.clock.register(stud4.move_and_take_stuff,1,current_time)
-    
-    Player.clock.register(troll1.eat_people,2,current_time)
-    Player.clock.register(troll2.eat_people,2,current_time)
-    Player.clock.register(troll3.eat_people,2,current_time)
-    Player.clock.register(troll4.eat_people,2,current_time)
-    Player.clock.register(troll5.eat_people,2,current_time)
-    Player.clock.register(troll6.eat_people,2,current_time)
-    Player.clock.register(prof1.lecture,2,current_time)
-    Player.clock.register(prof2.lecture,2,current_time)
-    Player.clock.register(trollhunt1.kill_trolls,2,current_time)
-    Player.clock.register(trollhunt2.kill_trolls,2,current_time)
-    Player.clock.register(trollhunt3.kill_trolls,2,current_time)
-    Player.clock.register(trollhunt4.kill_trolls,2,current_time)
-"""    
     
     
 SAME_ROUND = 1
