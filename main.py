@@ -220,6 +220,7 @@ def main ():
         if response[0] in VERBS:
             result = VERBS[response[0]].act(response[1:])
             if result == NEXT_ROUND:
+                print 
                 Player.clock.call_regfunc()
 
         else:
