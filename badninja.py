@@ -6,7 +6,7 @@ Created on Tue Oct 21 14:50:18 2014
 """
 
 from npc import *
-
+from player import *
 
 class BadNinja(NPC):
     def __init__(self,name,loc,restlessness,miserly,desc):
@@ -14,6 +14,7 @@ class BadNinja(NPC):
         self._max_health = 10
         self._health = self._max_health
         self.miserly = miserly
+        Player.clock.register(self.steal,2,Player.clock.time)
     
     def is_player():
         return False
@@ -35,18 +36,6 @@ class BadNinja(NPC):
                     self.say("Burn all homework!!.")
                     content.destroy()
                     print content.name()+" was destroyed."
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        
+                    
+    def is_badninja():
+        return True

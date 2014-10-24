@@ -16,6 +16,9 @@ class WeaponAndArmor(MobileThing):
     def is_weaponandarmor(self):
         return True
     
+    def is_player(self):
+        return False
+    
     
     
     

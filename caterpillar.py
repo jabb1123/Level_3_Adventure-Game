@@ -10,12 +10,17 @@ class Caterpillar(MobileThing):
         self._name = name
         self._isCaterpillar = True
         self._isCocoon = False
+        Player.clock.register(self.new_age,1,Player.clock.time)
+        Player.clock.register(self.transform,2,None)
         
     def age(self):
         return self._age
     
     def is_cocoon(self):
         return self._isCocoon
+    
+    def set_cocoon(self,val):
+        self._isCocoon = val
         
     def is_caterpillar(self):
         return self._isCaterpillar
@@ -25,26 +30,29 @@ class Caterpillar(MobileThing):
     
     def transform (self):
         if self.age() >= 3:
-            if self._isCocoon == True:
+            print self._isCocoon
+            if self.is_cocoon() == True:
                 if self.location().is_person():
-                    Butterfly(self.name(), self.location().location(),random.randint(1,5),self.name+' is fluttering around!')
-                    Player.clock.unregister(self.new_age,1,0)
-                    Player.clock.unregister(self.transform,1,None)
+                    Butterfly(self.name(), self.location().location(),random.randint(1,5),self.name()+' is fluttering around!')
+                    Player.clock.unregister(self.new_age,1,Player.clock.time)
+                    Player.clock.unregister(self.transform,2,None)
                 else:
-                    Butterfly(self.name(), self.location(),random.randint(1,5),self.name+' is fluttering around!')
-                    Player.clock.unregister(self.new_age,1,0)
-                    Player.clock.unregister(self.transform,1,None)
-                self.destroy()
+                    Butterfly(self.name(), self.location(),random.randint(1,5),self.name()+' is fluttering around!')
+                    Player.clock.unregister(self.new_age,1,Player.clock.time)
+                    Player.clock.unregister(self.transform,2,None)
+                self.setDesc('It is '+self.name()+"'s empty shell")
+                self.setName(self.name()+"'s-Cocoon")
             else:
-                self.is_cocoon = True
-                self.setDesc(self.name()+' has become a cocoon!')
+                self.set_cocoon(True)
+                self.setDesc(self.name() +' has become a cocoon!')
                 
                 
                 
         
 class Butterfly(NPC):
     def __init__ (self,name,loc,restlessness, desc):
-        NPC.__init__(self,name,loc, desc,restlessness,0,desc)
-        Player.clock.register(self.move_and_take_stuff,1,0)
+        NPC.__init__(self,name,loc,restlessness,0,desc)
         
+    def is_butterfly():
+        return True
     

@@ -1,11 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 21 21:05:57 2014
-
-@author: jmorris
-"""
-
+from player import *
 from npc import *
+from weaponandarmor import *
+
 
 class Dragon(NPC):
     def __init__ (self,name,loc,restlessness,_rage, desc):
@@ -14,7 +10,8 @@ class Dragon(NPC):
         self._health = self._max_health
         self.restlessness = restlessness
         self._rage = 2
-    
+        Player.clock.register(self.burn_everything,1,Player.clock.time)
+        
 
     def burn_everything (self,time):
       if not self.is_in_limbo():
@@ -37,9 +34,10 @@ class Dragon(NPC):
 
     def die (self):
         self.say('How dare you slay me!! AAAAAHHHHHHHHHHHHHH!!!!!!')
+        #Player.clock.unregister(self.burn_everything,1,Player.clock.time)
+        #Player.clock.unregister(self.move_somewhere,1,Player.clock.time)
         self.destroy()
         print "You have slain the dragon. You gain the dragon sword and the dragon shield."
-        DragonSword = WeaponAndArmor("Dragon Sword",Player.me.location(),"The most powerful sword in the game. Burns everyone. +100 Str",100,0)
-        DragonShield = WeapnAndArmor("Dragon Shield", Player.me.location(), "The most powerful shield in the game. You are invincible. +200 Def",0,200 )
-        Player.me.contents().append(DragonSword)
-        Player.me.contents().append(DragonShield)
+
+        Player.me.contents().append(WeaponAndArmor("Dragon Sword",Player.me.location(),"The most powerful sword in the game. Burns everyone. +100 Str",100,0))
+        Player.me.contents().append(WeaponAndArmor("Dragon Shield", Player.me.location(), "The most powerful shield in the game. You are invincible. +200 Def",0,200 ))

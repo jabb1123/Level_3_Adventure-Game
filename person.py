@@ -1,4 +1,5 @@
 from mobile import *
+from player import *
 
 class Person (MobileThing):    # Container...
 
@@ -78,6 +79,15 @@ class Person (MobileThing):    # Container...
 
     def die (self):
         self.location().broadcast('An earth-shattering, soul-piercing scream is heard...')
+        '''Player.clock.unregister(self.move_and_take_stuff,1,Player.clock.time)
+        if self.is_professor():
+            Player.clock.unregister(self.lecture,2,Player.clock.time)
+        elif self.is_troll():
+            Player.clock.unregister(self.eat_people,2,Player.clock.time)
+        elif self.is_trollhunter():
+            Player.clock.unregister(self.kill_trolls,1,Player.clock.time)
+        elif self.is_badninja():
+            Player.clock.unregister(self.steal,2,Player.clock.time)'''
         self.destroy()
         
 
@@ -105,7 +115,6 @@ class Person (MobileThing):    # Container...
     def is_person (self):
         return True
         
-    
     def add_thing (self,t):
         self._contents.append(t)
 

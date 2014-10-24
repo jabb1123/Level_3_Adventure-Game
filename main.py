@@ -15,7 +15,7 @@ from caterpillar import *
 from badninja import *
 from dragon import *
 from weaponandarmor import *
-
+from clock import *
 
 
 REVERSE = {
@@ -79,7 +79,6 @@ def create_world ():
     
 
     # The player is the first 'thing' that has to be created
-
     Player('self', oval, "Hey! That's me!",5)
 
     radar1= Radar('handy-radar',mh353, 'Can look at everything.') 
@@ -87,20 +86,7 @@ def create_world ():
     thing1= Thing('blackboard', ac113, 'You can write stuff on it')
     thing2= Thing('lovely-trees', oval, 'It looks pretty lovely.')
     thing3= Thing('track', bGym, 'You can run on it.')
-    
-    mob1= MobileThing('Weights',bGym,'Very heavy. Can throw at enemies.')
-    mob2= MobileThing('Nerf Gun',westh, 'Can shoot and kill people.')
-    npc1= NPC('Babo',bHealth,random.randint(1,5),random.randint(1,5),'Aggresive type')
-    npc2= NPC('Gabe-the-Babie',babson,random.randint(1,5),random.randint(1,5), 'Submissive type.')
-    
-    
-    mob3=MobileThing('cs-book', oval, 'Learn computer stuff.')
-    mob4=MobileThing('math-book', oval, 'Learn math stuff.')
 
-    comp1= Computer('Laptop', oval, "Android 1")
-    comp2= Computer('computer', easth, "Android 2")
-    hw0= Homework('hw-0',oval,'it is')
-                 
     prof1= Professor('Superman', oval,3,2,"superguy.")
     prof2= Professor('Riccardo',mh353,random.randint(1,5),2, 'The cool type.')
     
@@ -134,63 +120,68 @@ def create_world ():
     badninja2 = BadNinja('stealth',oval,random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
     badninja3 = BadNinja('stealth',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
     
-    dragon = Dragon('Smaug',random.choice(Room.rooms),random.randint(1,3),random.randint(1,2),"Most powerful enemy. Known to burn everything when angry. You need the Dragon shield to protect yourself from it." )
+    dragon = Dragon('Smaug',oval,random.randint(1,3),random.randint(1,2),"Most powerful enemy. Known to burn everything when angry. You need the Dragon shield to protect yourself from it." )
 
     weapon1 = WeaponAndArmor("ShortSword",oval,"Weakest weapon. Strong enough to kill trolls in one blow. +3 str",3,0)
     weapon2 = WeaponAndArmor("LongSword",random.choice(Room.rooms),"fairly strong weapon. Strong enough to kill badNinjas in one blow. +5 str",5,0)
     weapon3 = WeaponAndArmor("Katana",random.choice(Room.rooms),"A very powerful weapon. You now have a fighting chance against a dragon, but not really.",10,0)
-    weapon4 = WeaponAndArmor("Rocket Launcher",mh353,"A cheat weapon. Strong enough to kill anyone in one blow.",50,0)
+    weapon4 = WeaponAndArmor("Rocket Launcher",oval,"A cheat weapon. Strong enough to kill anyone in one blow.",50,0)
     armor1 = WeaponAndArmor("leather armor",oval,"Weakest armor. Strong enough to withstand troll bites a little. +3 def",0,5)
     armor2 = WeaponAndArmor("steel armor",random.choice(Room.rooms),"fairly strong armor. Strong enough to withstand troll bites for a while. +5 def",0,5)
     armor3 = WeaponAndArmor("golden armor",random.choice(Room.rooms),"A very powerful armor. You now have a fighting chance against a dragon, but not really. +20 def",0,20)
-    armor4 = WeaponAndArmor("Fire Proof suit",mh353,"A cheat armor. Strong enough to withstand anything.",0,100)
+    armor4 = WeaponAndArmor("Fire Proof suit",oval,"A cheat armor. Strong enough to withstand anything.",0,100)
+
     
     def Store_reg_elements():
-        current_time = Player.clock.time()
+        current_time = Player.clock._time
+        
         Player.clock.register(Player.clock.tick,1,None)
         Player.clock.register(Player.clock.print_tick_action,1,None)
+
         Player.clock.register(Player.me.look_around,3,None)
         
-        Player.clock.register(troll1.move_and_take_stuff,1,current_time)
-        Player.clock.register(troll2.move_and_take_stuff,1,current_time)
-        Player.clock.register(troll3.move_and_take_stuff,1,current_time)
-        Player.clock.register(troll4.move_and_take_stuff,1,current_time)
-        Player.clock.register(troll5.move_and_take_stuff,1,current_time)
-        Player.clock.register(troll6.move_and_take_stuff,1,current_time)
-        Player.clock.register(trollhunt1.move_and_take_stuff,2,current_time)
-        Player.clock.register(trollhunt2.move_and_take_stuff,2,current_time)
-        Player.clock.register(trollhunt3.move_and_take_stuff,2,current_time)
-        Player.clock.register(trollhunt4.move_and_take_stuff,2,current_time)
-        Player.clock.register(prof1.move_and_take_stuff,1,current_time)
-        Player.clock.register(prof2.move_and_take_stuff,1,current_time)
-        Player.clock.register(stud1.move_and_take_stuff,1,current_time)
-        Player.clock.register(stud2.move_and_take_stuff,1,current_time)
-        Player.clock.register(stud3.move_and_take_stuff,1,current_time)
-        Player.clock.register(stud4.move_and_take_stuff,1,current_time)
-        Player.clock.register(cat1.new_age,1,current_time)
-        
-        Player.clock.register(troll1.eat_people,2,current_time)
-        Player.clock.register(troll2.eat_people,2,current_time)
-        Player.clock.register(troll3.eat_people,2,current_time)
-        Player.clock.register(troll4.eat_people,2,current_time)
-        Player.clock.register(troll5.eat_people,2,current_time)
-        Player.clock.register(troll6.eat_people,2,current_time)
-        Player.clock.register(prof1.lecture,2,current_time)
-        Player.clock.register(prof2.lecture,2,current_time)
-        Player.clock.register(trollhunt1.kill_trolls,1,current_time)
-        Player.clock.register(trollhunt2.kill_trolls,1,current_time)
-        Player.clock.register(trollhunt3.kill_trolls,1,current_time)
-        Player.clock.register(trollhunt4.kill_trolls,1,current_time)
-        Player.clock.register(cat1.transform,2,None)
-        Player.clock.register(dragon.burn_everything,1,current_time)
-        
-        Player.clock.register(badninja1.steal,1,current_time)
-        Player.clock.register(badninja2.steal,1,current_time)
-        Player.clock.register(badninja3.steal,1,current_time)
+#        Player.clock.register(troll1.move_and_take_stuff,1,current_time)
+#        Player.clock.register(troll2.move_and_take_stuff,1,current_time)
+#        Player.clock.register(troll3.move_and_take_stuff,1,current_time)
+#        Player.clock.register(troll4.move_and_take_stuff,1,current_time)
+#        Player.clock.register(troll5.move_and_take_stuff,1,current_time)
+#        Player.clock.register(troll6.move_and_take_stuff,1,current_time)
+#        Player.clock.register(trollhunt1.move_and_take_stuff,2,current_time)
+#        Player.clock.register(trollhunt2.move_and_take_stuff,2,current_time)
+#        Player.clock.register(trollhunt3.move_and_take_stuff,2,current_time)
+#        Player.clock.register(trollhunt4.move_and_take_stuff,2,current_time)
+#        Player.clock.register(prof1.move_and_take_stuff,1,current_time)
+#        Player.clock.register(prof2.move_and_take_stuff,1,current_time)
+#        Player.clock.register(stud1.move_and_take_stuff,1,current_time)
+#        Player.clock.register(stud2.move_and_take_stuff,1,current_time)
+#        Player.clock.register(stud3.move_and_take_stuff,1,current_time)
+#        Player.clock.register(stud4.move_and_take_stuff,1,current_time)
+#        Player.clock.register(cat1.new_age,1,current_time)
+#        
+#        Player.clock.register(troll1.eat_people,2,current_time)
+#        Player.clock.register(troll2.eat_people,2,current_time)
+#        Player.clock.register(troll3.eat_people,2,current_time)
+#        Player.clock.register(troll4.eat_people,2,current_time)
+#        Player.clock.register(troll5.eat_people,2,current_time)
+#        Player.clock.register(troll6.eat_people,2,current_time)
+#        Player.clock.register(prof1.lecture,2,current_time)
+#        Player.clock.register(prof2.lecture,2,current_time)
+#        Player.clock.register(trollhunt1.kill_trolls,1,current_time)
+#        Player.clock.register(trollhunt2.kill_trolls,1,current_time)
+#        Player.clock.register(trollhunt3.kill_trolls,1,current_time)
+#        Player.clock.register(trollhunt4.kill_trolls,1,current_time)
+#        Player.clock.register(cat1.transform,2,None)
+#        Player.clock.register(dragon.burn_everything,1,current_time)
+#        
+#        Player.clock.register(badninja1.steal,1,current_time)
+#        Player.clock.register(badninja2.steal,1,current_time)
+#        Player.clock.register(badninja3.steal,1,current_time)
+
 
         
     Store_reg_elements()
-
+    
+    
 VERBS = {
     'quit' : Quit(),
     'look' : Look(),

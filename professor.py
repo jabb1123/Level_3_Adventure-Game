@@ -8,6 +8,7 @@ class Professor (NPC):
   def __init__ (self,name,loc,restlessness,professorial,desc):
       NPC.__init__(self,name,loc,restlessness,100, desc)
       self._professorial = professorial
+      Player.clock.register(self.lecture,2,Player.clock.time)       
 
   _topics = ['Turing machines',
              'the lambda calculus',
@@ -30,7 +31,6 @@ class Professor (NPC):
       else:
           self.say("Wait... This homework is not even started!!")
           hw.give(self,actor)
-          
           
   def is_professor(self):
       return True
