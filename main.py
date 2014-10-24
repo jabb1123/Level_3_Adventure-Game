@@ -102,7 +102,7 @@ def create_world ():
     
     Babo('Chris the Cop', bSafety, random.randint(1,5),random.randint(1,5), "I will arrest all of you!!!")
     Babo('Peter Po-Po', random.choice(Room.rooms), random.randint(1,5),random.randint(1,5), "Feel my Justice!!!")
-    Babo('Dot the Dalmatian', random.choice(Room.rooms), random.randint(1,5),random.randint(1,5), "Woof! (I'm not actually a dog!)")
+    Babo('Dot the Dalmatian', oval, random.randint(1,5),random.randint(4,5), "Woof! (I'm not actually a dog!)")
 
     NPC('Frankie Freshman',random.choice(Room.rooms),random.randint(1,5),random.randint(1,5), "I came to learn")
     NPC('Joe Junior',random.choice(Room.rooms),random.randint(1,5),random.randint(1,5), "I came to learn")
