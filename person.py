@@ -78,9 +78,14 @@ class Person (MobileThing):    # Container...
             self.say('My health is now '+str(self.health()))
 
 
-    def detain(self):
+    def detain(self,cop,loc):
         self.say("I'm to pretty to go to jail!")
-        self.location() = 
+        cop.say("Too bad! Crime always pays!")
+        loc.add_thing(self)
+        loc.add_thing(cop)
+        self._location = loc
+        cop._location = loc
+        
     
     
     def die (self):

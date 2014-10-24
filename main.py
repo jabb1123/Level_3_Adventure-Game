@@ -16,6 +16,7 @@ from badninja import *
 from dragon import *
 from weaponandarmor import *
 from clock import *
+from babo import *
 
 
 REVERSE = {
@@ -98,6 +99,10 @@ def create_world ():
     Homework('hw-4',random.choice(Room.rooms),"I'm due at midnight!")
     Homework('hw-5',random.choice(Room.rooms),"I'm due at midnight!")
     Homework('hw-6',random.choice(Room.rooms),"I'm due at midnight!")
+    
+    Babo('Chris the Cop', bSafety, random.randint(1,5),random.randint(1,5), "I will arrest all of you!!!")
+    Babo('Peter Po-Po', random.choice(Room.rooms), random.randint(1,5),random.randint(1,5), "Feel my Justice!!!")
+    Babo('Dot the Dalmatian', random.choice(Room.rooms), random.randint(1,5),random.randint(1,5), "Woof! (I'm not actually a dog!)")
 
     NPC('Frankie Freshman',random.choice(Room.rooms),random.randint(1,5),random.randint(1,5), "I came to learn")
     NPC('Joe Junior',random.choice(Room.rooms),random.randint(1,5),random.randint(1,5), "I came to learn")

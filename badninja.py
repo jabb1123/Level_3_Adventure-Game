@@ -16,9 +16,6 @@ class BadNinja(NPC):
         self.miserly = miserly
         Player.clock.register(self.steal,2,Player.clock.time)
     
-    def is_player():
-        return False
-        
     def steal(self,time):
         if not self.is_in_limbo() and self.location()==Player.me.location():
             for content in Player.me.contents():
@@ -37,7 +34,7 @@ class BadNinja(NPC):
                     content.destroy()
                     print content.name()+" was destroyed."
                     
-    def is_badninja():
+    def is_badninja(self):
         return True
         
     def die (self):

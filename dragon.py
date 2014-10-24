@@ -4,7 +4,7 @@ from weaponandarmor import *
 
 
 class Dragon(NPC):
-    def __init__ (self,name,loc,restlessness,_rage, desc):
+    def __init__ (self,name,loc,restlessness,rage, desc):
         NPC.__init__(self,name,loc,restlessness,1, desc)
         self._max_health = 50
         self._health = self._max_health
