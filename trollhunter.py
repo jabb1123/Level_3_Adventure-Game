@@ -28,3 +28,6 @@ class TrollHunter(NPC):
             else:
                 self.location().report(self.name() + " is full of rage!!!")
 
+    def die(self): 
+        Player.clock.unregister(self.kill_trolls,1,Player.clock.time)
+        NPC.die(self)

@@ -40,6 +40,7 @@ class Clock (object):
         for key in self.regfunc.keys():
             for func in self.regfunc[key]:
                 if func[1] == None:
+                    print func[0]
                     func[0]()
                 else:
                     func[0](func[1]())

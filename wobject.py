@@ -33,21 +33,26 @@ class WObject (object):
 
     def is_homework (self):
         return False
-    
+        
+    def is_babo(self):
+        return False
+        
+    def is_player(self):
+        return False
 
     def is_weaponandarmor(self):
         return False
 
-    def is_trollhunter():
+    def is_trollhunter(self):
         return False
         
-    def is_professor():
+    def is_professor(self):
         return False
     
-    def is_butterfly():
+    def is_butterfly(self):
         return False
         
-    def is_badninja():
+    def is_badninja(self):
         return False
     
     def set_Name(self, _name):

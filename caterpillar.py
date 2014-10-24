@@ -51,7 +51,7 @@ class Caterpillar(MobileThing):
         
 class Butterfly(NPC):
     def __init__ (self,name,loc,restlessness, desc):
-        NPC.__init__(self,name,loc,restlessness,0,desc)
+        NPC.__init__(self,name,loc,restlessness,1,desc)
         
     def is_butterfly():
         return True

@@ -76,7 +76,6 @@ class Player (Person):
             return ', '.join([x.name() for x in lst])
         print obj.name()
         print obj.describe()
-        
         if obj.is_person():
             if obj.contents() != []:
                 print names(obj.contents())
@@ -89,7 +88,7 @@ class Player (Person):
             acted._health -= self._strength
             if acted._health <=0:
                 acted.die()
-                print acted._name + "has been slain..."
+                print acted._name + " has been slain..."
             
     def die (self):
         self.say('I am slain!')

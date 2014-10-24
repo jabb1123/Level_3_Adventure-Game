@@ -39,3 +39,7 @@ class BadNinja(NPC):
                     
     def is_badninja():
         return True
+        
+    def die (self):
+        Player.clock.unregister(self.steal,2,Player.clock.time)
+        NPC.die(self)

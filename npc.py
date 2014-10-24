@@ -33,4 +33,5 @@ class NPC (Person):
 
     def die (self):
         self.say('SHREEEEEK! I, uh, suddenly feel very faint...')
+        Player.clock.unregister(self.move_and_take_stuff,1,Player.clock.time)
         Person.die(self)

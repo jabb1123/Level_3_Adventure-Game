@@ -17,4 +17,3 @@ class Homework (MobileThing):
     def check_done_homework(self):
         return self.done
 
-

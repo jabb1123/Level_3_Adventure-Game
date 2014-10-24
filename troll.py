@@ -23,3 +23,6 @@ class Troll (NPC):
     def is_troll(self):
         return True
 
+    def die(self):
+        Player.clock.unregister(self.eat_people,2,Player.clock.time)
+        NPC.die(self)
