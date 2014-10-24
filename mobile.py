@@ -22,6 +22,10 @@ class MobileThing (Thing):
             actor.say('I took ' + self.name())
             actor.location().del_thing(self)
             actor.add_thing(self)
+            if self.is_weaponandarmor():
+                actor._health += self.defense
+                actor._max_health += self.defense
+                actor._strength += self.attack
     
     def drop(self,actor):
         actor.say('I drop ' + self.name() +' at '+ actor.location().name() )

@@ -13,11 +13,12 @@ class Player (Person):
     # static field representing the clock
     clock = Clock(0)
 
-    def __init__ (self,name,loc, desc):
+    def __init__ (self,name,loc, desc, _strength):
         Person.__init__(self,name,loc, desc)
         Player.me = self
         self._max_health = 5
         self._health = self._max_health
+        self._strength = _strength
 
     # Grab any kind of thing from player's location, 
     # given its name.  The thing may be in the possession of
@@ -66,15 +67,29 @@ class Player (Person):
         print 
         print "Events:"
         print
-        
+    
+    def is_player(self):
+        return True
+    
     def look (self, obj):
         def names (lst):
             return ', '.join([x.name() for x in lst])
         print obj.name()
         print obj.describe()
+        
         if obj.is_person():
             if obj.contents() != []:
                 print names(obj.contents())
+        if obj.is_player():
+            print "Strength: " + str(self._strength)
+            print "Health: " + str(self._health) + "/" + str(self._max_health)
+            
+    def attack(self, acted):
+        if acted.is_person():
+            acted._health -= self._strength
+            if acted._health <=0:
+                acted.die()
+                print acted._name + "has been slain..."
             
     def die (self):
         self.say('I am slain!')

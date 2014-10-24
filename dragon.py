@@ -21,8 +21,8 @@ class Dragon(NPC):
         if random.randrange(self._rage) == 0:
             people = self.people_around()
             for people in self.people_around():
-                self.location().report(self.name() + ' burns ' + victim.name())
-                victim.suffer(10)
+                self.location().report(self.name() + ' burns ' + people.name())
+                people.suffer(10)
             else:
                 self.location().report(self.name() + " is ready to burn things.")
     

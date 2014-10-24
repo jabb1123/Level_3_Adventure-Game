@@ -57,6 +57,11 @@ class Direction (Verb):
         else:
             return SAME_ROUND
 
+class Attack (Verb):
+    
+    def action1(self,obj):
+        Player.me.attack(obj)
+        return NEXT_ROUND
 
 class Look (Verb):
 

@@ -80,7 +80,7 @@ def create_world ():
 
     # The player is the first 'thing' that has to be created
 
-    Player('self', oval, "Hey! That's me!")
+    Player('self', oval, "Hey! That's me!",5)
 
     radar1= Radar('handy-radar',mh353, 'Can look at everything.') 
     radar2= Radar('handy-radar',oval, 'Can look at everything.') 
@@ -134,7 +134,7 @@ def create_world ():
     badninja2 = BadNinja('stealth',oval,random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
     badninja3 = BadNinja('stealth',random.choice(Room.rooms),random.randint(1,3),random.randint(1,3),"Burn them Homeworks!")
     
-    dragon1 = Dragon('Smaug',random.choice(Room.rooms),random.randint(1,3),random.randint(1,2),"Most powerful enemy. Known to burn everything when angry. You need the Dragon shield to protect yourself from it." )
+    dragon = Dragon('Smaug',random.choice(Room.rooms),random.randint(1,3),random.randint(1,2),"Most powerful enemy. Known to burn everything when angry. You need the Dragon shield to protect yourself from it." )
 
     weapon1 = WeaponAndArmor("ShortSword",oval,"Weakest weapon. Strong enough to kill trolls in one blow. +3 str",3,0)
     weapon2 = WeaponAndArmor("LongSword",random.choice(Room.rooms),"fairly strong weapon. Strong enough to kill badNinjas in one blow. +5 str",5,0)
@@ -182,7 +182,7 @@ def create_world ():
         Player.clock.register(trollhunt3.kill_trolls,1,current_time)
         Player.clock.register(trollhunt4.kill_trolls,1,current_time)
         Player.clock.register(cat1.transform,2,None)
-        
+        Player.clock.register(dragon.burn_everything,1,current_time)
         
         Player.clock.register(badninja1.steal,1,current_time)
         Player.clock.register(badninja2.steal,1,current_time)
@@ -205,7 +205,8 @@ VERBS = {
     'east' : Direction('east'),
     'west' : Direction('west'),
     'up'   : Direction('up'),
-    'down' : Direction('down')
+    'down' : Direction('down'),
+    'attack' : Attack()
     #,'check': Check()
 }
   

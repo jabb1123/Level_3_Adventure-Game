@@ -15,6 +15,9 @@ class BadNinja(NPC):
         self._health = self._max_health
         self.miserly = miserly
     
+    def is_player():
+        return False
+        
     def steal(self,time):
         if not self.is_in_limbo() and self.location()==Player.me.location():
             for content in Player.me.contents():

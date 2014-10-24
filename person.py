@@ -7,6 +7,7 @@ class Person (MobileThing):    # Container...
         self._max_health = 3
         self._health = self._max_health
         self._contents = []
+        
 
     def health (self):
         return self._health

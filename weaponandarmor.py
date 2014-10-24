@@ -13,7 +13,8 @@ class WeaponAndArmor(MobileThing):
         self.attack = attack
         self.defense = defense
     
-    
+    def is_weaponandarmor(self):
+        return True
     
     
     
